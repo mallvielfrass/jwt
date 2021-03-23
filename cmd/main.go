@@ -26,6 +26,7 @@ func inx(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "<p><a href='dog.html'>Собаки</a></p>")
 
 	//tt := `{{.}}`
+
 	//t := template.Must(template.New("test").Parse(tt))
 	//t.Execute(w, text)
 	w.Header().Set("Content-Type", "text/html")
