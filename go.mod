@@ -2,14 +2,18 @@ module github.com/mallvielfrass/sessions
 
 go 1.16
 
-replace github.com/mallvielfrass/sessions/internal/handlers => ./internal/handlers
+//replace github.com/mallvielfrass/sessions/internal/handlers => ./internal/handlers
 
-replace github.com/mallvielfrass/sessions/internal/middleware => ./internal/middleware
+//replace github.com/mallvielfrass/sessions/internal/middleware => ./internal/middleware
 
 require (
-	github.com/gorilla/mux v1.8.0
-	github.com/mallvielfrass/fmc v0.0.0-20210319211811-9067867fc527
-	github.com/mallvielfrass/sessions/internal/handlers v0.0.0-00010101000000-000000000000
-	github.com/mallvielfrass/sessions/internal/middleware v0.0.0-00010101000000-000000000000
+	github.com/go-chi/chi/v5 v5.0.2
+	github.com/mallvielfrass/fmc v0.0.0-20210329150608-ca76733c5741
+	github.com/satori/go.uuid v1.2.0 // indirect
 	github.com/urfave/negroni v1.0.0
+	golang.org/x/crypto v0.0.0-20210322153248-0c34fe9e7dc2
+	golang.org/x/sys v0.0.0-20210326220804-49726bf1d181 // indirect
+	golang.org/x/term v0.0.0-20210317153231-de623e64d2a6 // indirect
+	gorm.io/driver/sqlite v1.1.4
+	gorm.io/gorm v1.21.6
 )

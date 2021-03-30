@@ -1,6 +1,0 @@
-github.com/mallvielfrass/fmc v0.0.0-20210319211811-9067867fc527 h1:gHxbGIG4g6Gsm6eJNNx7Ht3tCFxz+ku1IzsGoVLajco=
-github.com/mallvielfrass/fmc v0.0.0-20210319211811-9067867fc527/go.mod h1:tcJMCU/d+BOs7CPpC62wajRDpPatNI2QCjzngnhISBQ=
-github.com/mattn/go-isatty v0.0.12 h1:wuysRhFDzyxgEmMf5xjvJ2M9dZoWAXNNr5LSBS7uHXY=
-github.com/mattn/go-isatty v0.0.12/go.mod h1:cbi8OIDigv2wuxKPP5vlRcQ1OAZbq2CE4Kysco4FUpU=
-golang.org/x/sys v0.0.0-20200116001909-b77594299b42 h1:vEOn+mP2zCOVzKckCZy6YsCtDblrpj/w7B9nxGNELpg=
-golang.org/x/sys v0.0.0-20200116001909-b77594299b42/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=

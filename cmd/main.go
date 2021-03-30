@@ -1,46 +1,36 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 
-	"github.com/gorilla/mux"
+	"github.com/go-chi/chi/v5"
 	"github.com/mallvielfrass/fmc"
-	"github.com/mallvielfrass/jwt/internal/handlers"
-	"github.com/mallvielfrass/jwt/internal/middleware"
+	"github.com/mallvielfrass/sessions/internal/database"
+	"github.com/mallvielfrass/sessions/internal/middleware"
 	"github.com/urfave/negroni"
 )
 
-var (
-	port = "8080"
-)
-
-func inx(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "<head></head>")
-	//v := Res{R: r}
-	//tcookie := v.ck("appointment")
-	for _, cookie := range r.Cookies() {
-		fmt.Fprintf(w, "<br>Found a cookie named: name:%s, value: %s", cookie.Name, cookie.Value)
-	}
-	//text := "<p>some text</p>"
-	fmt.Fprintf(w, "<p><a href='dog.html'>Собаки</a></p>")
-
-	//tt := `{{.}}`
-
-	//t := template.Must(template.New("test").Parse(tt))
-	//t.Execute(w, text)
-	w.Header().Set("Content-Type", "text/html")
+type St struct {
+	base database.Database
 }
+
 func main() {
-	r := mux.NewRouter()
+	port := "8080"
+	r := chi.NewRouter()
+	base := database.Init("base.db")
+	base.CreateUserTable()
+	base.CreateSessionTable()
+	st := St{
+		base: base,
+	}
 	//handlers
-	r.HandleFunc("/status", handlers.StatusHandler).Methods("GET")
-	r.HandleFunc("/", inx).Methods("GET")
-
-	fmc.Printfln("#gbtApp running on [#ybt:%s#gbt] port.", port)
-
+	r.HandleFunc("/", st.index)
+	r.HandleFunc("/create_user", st.add)
+	r.HandleFunc("/t", st.t)
+	r.HandleFunc("/s", st.s)
 	n := negroni.New()
 	n.Use(negroni.HandlerFunc(middleware.Middleware))
 	n.UseHandler(r)
+	fmc.Printfln("#gbtApp running on [#ybt:%s#gbt] port.", port)
 	http.ListenAndServe(":"+port, n)
 }
