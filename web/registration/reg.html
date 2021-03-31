@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Регистрация</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <p class="error_msg" v-if="errors.length">
+            <b>Пожалуйста, исправьте ошибки:</b>
+        <ul class="error_list">
+            <li class="error_list" v-for="error in errors">${ error }</li>
+        </ul>
+        </p>
+        <div class="modal-mask" style="background-color: rgba(0, 0, 0, 0)">
+            <div class="modal-wrapper">
+                <div class="modal-container" style="width: 400px;height: 400px;">
+                    <div v-if="RegSuccess">
+                        <div class="switch-field">
+                            <input type="radio" id="radio-one" name="switch-one" value="no" />
+                            <label for="radio-one" v-on:click="logreg=true" style="width: 171px">Registration</label>
+                            <input type="radio" id="radio-two" name="switch-one" value="yes"  checked />
+                            <label for="radio-two" v-on:click="logreg=false" style="width: 171px">Login</label>
+                        </div>
+                        <div v-if="logreg">
+
+                            <form @submit.prevent="subHandler">
+                                <div style="height:60% ;">
+                                    <div style="padding-bottom: 7px;">
+                                        <input type="text" placeholder="Name" name="login" id="login" v-model="login"
+                                            class="form-control">
+                                    </div>
+                                    <div style="padding-bottom: 7px;">
+                                        <input type="email" name="email" placeholder="email" id="email" v-model="email"
+                                            class="form-control">
+                                    </div>
+                                    <div style="padding-bottom: 7px;">
+                                        <input type="password" placeholder="password" name="password" id="passF"
+                                            v-model="passF" class="form-control">
+                                    </div>
+                                    <div style="padding-bottom: 7px;">
+                                        <input type="password" placeholder="password" name="password" id="passT"
+                                            v-model="passT" class="form-control">
+                                    </div>
+
+                                </div>
+
+                                <div style="padding-top: 10px;">
+                                    <input type="submit" style="width: 340px;" class="btn btn-lg btn-success"
+                                        value="Submit">
+                                </div>
+
+                            </form>
+
+                        </div>
+                        <div v-else>
+                            <form @submit.prevent="logHandler">
+                                <div style="height:60% ;">
+                                    <div style="padding-bottom: 7px;">
+                                        <input type="text" placeholder="Name" name="login" id="login" v-model="login"
+                                            class="form-control">
+                                    </div>
+
+                                    <div style="padding-bottom: 7px;">
+                                        <input type="password" placeholder="password" name="password" id="passF"
+                                            v-model="passF" class="form-control">
+                                    </div>
+
+
+                                </div>
+
+
+                                <div style="padding-top: 10px;">
+                                    <input type="submit" style="width: 340px;" class="btn btn-lg btn-success"
+                                        value="Submit">
+                                </div>
+
+                            </form>
+
+
+                        </div>
+                    </div>
+                    <div v-else>
+
+                        <div v-if="SuccFalse">
+                            <div>Success</div>
+                            <button onclick="location.href = '/auth';"  style="width: 340px;" class="btn btn-lg btn-success"
+                            value="return to login page!">return to main page!</button>
+
+                        </div>
+                        <div v-else>failed. ${this.SuccFalseMessage}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script type="module">
+    import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.js'
+  </script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/web/registration/app.js" type="text/javascript" charset="utf-8"></script>
+
+</html>
