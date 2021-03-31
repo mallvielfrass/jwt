@@ -17,8 +17,14 @@ func (db Database) CreateUser(login, hash string) error {
 	}
 	return nil
 }
-func (db Database) GetUser() {
+func (db Database) GetUser(login string) (User, error) {
 	fmt.Println("add user")
+	var st User
+	if err := db.db.Where("login = ?", login).First(&st).Error; err != nil {
+		fmt.Println(err) // error handling...
+		return st, errors.New("session is not exist")
+	}
+	return st, nil
 }
 func (db Database) GetAllUsers() []User {
 	var users []User

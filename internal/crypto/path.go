@@ -14,7 +14,19 @@ func fileExists(filename string) bool {
 	}
 	return !info.IsDir()
 }
-
+func GetType(path string) string {
+	s := strings.Split(path, "/")
+	if len(s) == 0 {
+		return "undefined"
+	}
+	file := s[len(s)-1]
+	f := strings.Split(file, ".")
+	if len(f) == 0 {
+		return "undefined"
+	}
+	extension := f[len(f)-1]
+	return extension
+}
 func CheckAccessArea(path string) (string, bool) {
 	dir, err := os.Getwd()
 	if err != nil {
@@ -28,10 +40,10 @@ func CheckAccessArea(path string) (string, bool) {
 		return "", false
 	}
 	compare := strings.Contains(abs, dir)
-	fmt.Println("PWD:", dir)
-	fmt.Println("Absolute:", abs)
+	//fmt.Println("PWD:", dir)
+	//fmt.Println("Absolute:", abs)
 	ex := fileExists(abs)
-	fmt.Printf("Contains: %t | FileExists: %t\n", compare, ex)
+	//fmt.Printf("Contains: %t | FileExists: %t\n", compare, ex)
 	if !compare || !ex {
 		return "", false
 	}
