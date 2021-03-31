@@ -11,6 +11,16 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
+func (st St) login(w http.ResponseWriter, r *http.Request) {
+	data := "log in please."
+	tmpl, _ := template.New("data").Parse("<h1>{{ .}}</h1>")
+	tmpl.Execute(w, data)
+}
+func (st St) Info(w http.ResponseWriter, r *http.Request) {
+	data := "log in please."
+	tmpl, _ := template.New("data").Parse("<h1>{{ .}}</h1>")
+	tmpl.Execute(w, data)
+}
 func HandleCookie(hCookie *http.Cookie, err error) (string, error) {
 	if err != nil {
 		return "", err
@@ -39,7 +49,7 @@ func (st St) index(w http.ResponseWriter, r *http.Request) {
 		tmpl.Execute(w, data)
 	}
 }
-func (st St) add(w http.ResponseWriter, r *http.Request) {
+func (st St) CreateUserApi(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	login := r.FormValue("login")
 	password := r.FormValue("password")
@@ -60,7 +70,7 @@ func (st St) add(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf(" Login:%s |hash: %s \n", login, hash)
 	fmt.Fprintf(w, "ok\n")
 }
-func (st St) t(w http.ResponseWriter, r *http.Request) {
+func (st St) CreateSessionApi(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	session := uuid.NewV4().String()
 
@@ -82,19 +92,10 @@ func (st St) t(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("UUIDv4: %s\n", session)
 
 }
-func (st St) s(w http.ResponseWriter, r *http.Request) {
+func (st St) SearchSessionApi(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
-	//session := uuid.NewV4().String()
-
 	login := r.FormValue("login")
 	session := r.FormValue("session")
-	//myDate := time.Now()
-	//	var month float64 = 3.0
-	//	fmt.Println(myDate)
-	//shift := 2419200000000000 * time.Duration(month) //2419200000000000 = one month
-	//	fmt.Println(shift)
-	//	newDate := myDate.Add(shift)
-	//	fmt.Println(newDate)
 	uInfo, err := st.base.SearchSession(login, session)
 	if err != nil {
 		fmt.Printf("(add) Error: %s \n", err)
