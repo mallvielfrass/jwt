@@ -13,6 +13,85 @@
     <link rel="stylesheet" href="/web/profile/profile.css">
 </head>
 
+<style>
+    #sub {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .subtest {
+        flex-grow: 1;
+        width: 100%;
+        border-width: 2px;
+        border-style: solid;
+        border-color: rgb(0, 255, 98);
+        padding-left: 2%;
+    }
+
+    .subtesttwo {
+        flex-grow: 1;
+        width: 100%;
+        border-width: 2px;
+        border-style: solid;
+        border-color: rgb(199, 106, 0);
+        padding-left: 2%;
+    }
+
+    #box {
+        display: flex;
+    }
+
+    .test {
+        flex-grow: 1;
+        border-width: 2px;
+        border-style: solid;
+        border-color: black;
+        padding-left: 2%;
+        margin-top: 0%;
+    }
+
+    .test2 {
+        flex-grow: 3;
+        border-width: 2px;
+        border-style: solid;
+        border-color: black;
+        margin-top: 0%;
+    }
+
+    .test3 {
+        flex-grow: 1;
+
+    }
+
+    .round {
+        border-radius: 100px;
+        /* Радиус скругления */
+        border: 3px solid rgb(0, 0, 0);
+        /* Параметры рамки */
+        box-shadow: 0 0 7px rgb(78, 78, 78);
+        /* Параметры тени */
+        width: 64px;
+        height: 64px;
+    }
+    .input-send{
+        background:black;
+        border-top-left-radius:25%;
+        border-bottom-left-radius:25%;
+    text-decoration: none;
+    float: left;
+    height: 40px;
+    text-align: center;
+    color: #ffffff;
+  
+    font-size: 30px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-style: italic;
+    }
+    .form-control{
+        width: 90%;
+        height: 40px;
+    }
+</style>
 
 <body>
     <div id="app">
@@ -22,12 +101,48 @@
         <div id="navbar">
 
             <ul>
-                <li> <a href="/profile/settings">settings</a>  </li>
+                <li> <a href="/profile/settings">settings</a> </li>
                 <li> <button class="astext" v-on:click="exit()"> exit </button> </li>
 
             </ul>
         </div>
+        <div id="box">
+            <div class="test">
+                <p>
+                    <img src="/web/avatars/avatar.png" alt="" class="round">
+                </p>
+                <p>
+                    Login: [[.User]]
+                </p>
+            </div>
+            <div class="test2">
+                <div id="sub">
+                    <div class="subtest">
+                        <!-- Prepend -->
+                        <div class="input-group">
+                            <button class="input-send"> 	
+                                &#10148;</button>
+                            <input  v-model="message" type="text" class="form-control" placeholder="write your post" />
+                        </div>
+                    </div>
+                    <div class="subtesttwo">subtesttwo
 
+                        <br> flex-grow
+                        <br> <br> flex-grow
+                        <br> fedwedwed
+                        <br> edwe
+                        <br> dwedwed
+                        wdedcwed
+
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="test3"> </div>
+        </div>
+        
     </div>
 </body>
 

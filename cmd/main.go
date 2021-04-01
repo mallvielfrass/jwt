@@ -48,6 +48,12 @@ func staticRouter(w http.ResponseWriter, r *http.Request) {
 	case "css":
 		w.Header().Set("Content-Type", "text/css")
 		fmc.Printfln("#bbtStaticRouter> #ybtSet header: #bbt[#gbt%s#bbt]", ext)
+	case "png":
+		w.Header().Set("Content-Type", "image/png")
+		fmc.Printfln("#bbtStaticRouter> #ybtSet header: #bbt[#gbt%s#bbt]", ext)
+	case "jpg":
+		w.Header().Set("Content-Type", "image/jpeg")
+		fmc.Printfln("#bbtStaticRouter> #ybtSet header: #bbt[#gbt%s#bbt]", ext)
 	case "js":
 		w.Header().Set("Content-Type", "application/javascript")
 		fmc.Printfln("#bbtStaticRouter> #ybtSet header: #bbt[#gbt%s#bbt]", ext)
