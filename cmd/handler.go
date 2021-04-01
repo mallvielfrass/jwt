@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strings"
 	"text/template"
 	"time"
 
@@ -12,12 +13,39 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
+type ViewData struct {
+	User string
+}
+
 func (st St) login(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "web/registration/reg.html")
 }
 func (st St) Info(w http.ResponseWriter, r *http.Request) {
-	data := "Info"
-	tmpl, _ := template.New("data").Parse("<h1>{{ .}}</h1>")
+	//	http.ServeFile(w, r, "web/profile/profile.html")
+	login, loginErr := HandleCookie(r.Cookie("login"))
+	if loginErr != nil {
+		fmt.Println(loginErr)
+	}
+	//res1 :=
+	data := ViewData{
+		User: strings.ToUpper(login),
+	}
+	file := "profile.html"
+	tmpl, _ := template.New(file).Delims("[[", "]]").ParseFiles("web/profile/profile.html")
+	tmpl.Execute(w, data)
+}
+func (st St) Settings(w http.ResponseWriter, r *http.Request) {
+	//	http.ServeFile(w, r, "web/profile/profile.html")
+	login, loginErr := HandleCookie(r.Cookie("login"))
+	if loginErr != nil {
+		fmt.Println(loginErr)
+	}
+	//res1 :=
+	data := ViewData{
+		User: strings.ToUpper(login),
+	}
+	file := "settings.html"
+	tmpl, _ := template.New(file).Delims("[[", "]]").ParseFiles("web/settings/settings.html")
 	tmpl.Execute(w, data)
 }
 

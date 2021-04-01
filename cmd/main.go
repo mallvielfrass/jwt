@@ -72,9 +72,10 @@ func main() {
 	}
 	//handlers
 	r.HandleFunc("/", st.index)
-	r.HandleFunc("/login", st.login)
+	r.With(st.NoAuthMiddleware).HandleFunc("/login", st.login)
 	r.HandleFunc("/web/*", staticRouter)
 	r.With(st.AuthMiddleware).HandleFunc("/profile", st.Info)
+	r.With(st.AuthMiddleware).HandleFunc("/profile/settings", st.Settings)
 	r.Route("/api", func(r chi.Router) {
 		//only to this method must be acces for not authorized user
 		r.With(st.NoAuthMiddleware).Route("/auth", func(r chi.Router) {
