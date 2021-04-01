@@ -36,6 +36,7 @@ const app = new Vue({
                         console.log(dtime)
                         document.cookie = `login=${response.data.Login}; expires=${ dtime};`;
                         document.cookie = `session=${response.data.Session}; expires=${ dtime};`;
+                        location.href = '/profile'
                     }
                    // document.cookie = `login=${app.email}; expires=30d`;
                     //document.cookie = `password=${app.passF}; expires=30d`;
@@ -68,6 +69,7 @@ const app = new Vue({
                         console.log(dtime)
                         document.cookie = `login=${response.data.Login}; expires=${ dtime};`;
                         document.cookie = `session=${response.data.Session}; expires=${ dtime};`;
+                        location.href = '/profile'
                     }
                    // document.cookie = `login=${app.email}; expires=30d`;
                     //document.cookie = `password=${app.passF}; expires=30d`;

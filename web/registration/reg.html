@@ -32,6 +32,48 @@ crossorigin="anonymous" />
     
 
     -->
+    <style>
+        .switch-m {
+    display: flex;
+    margin-bottom: 36px;
+    overflow: hidden;
+}
+.switch-m input:checked + label {
+    background-color: #171718;
+    box-shadow: none;
+}
+.switch-m label:last-of-type {
+    border-radius: 0 4px 4px 0;
+}
+.switch-m label:first-of-type {
+    border-radius: 4px 0 0 4px;
+}
+.switch-m label {
+    background-color: #3a3a3b;
+    color: white;
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+    padding: 8px 16px;
+    margin-right: -1px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+    transition: all 0.1s ease-in-out;
+}
+.switch-m input {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+}
+.btn-black {
+    color: #fff;
+    background-color: #171718;
+    border-color: #171718;
+}
+    </style>
 </head>
 
 <body>
@@ -47,7 +89,7 @@ crossorigin="anonymous" />
             <div class="modal-wrapper">
                 <div class="modal-container" style="width: 400px;height: 400px;">
                     <div v-if="RegSuccess">
-                        <div class="switch-field">
+                        <div class="switch-m">
                             <input type="radio" id="radio-one" name="switch-one" value="no" />
                             <label for="radio-one" v-on:click="logreg=true" style="width: 171px">Registration</label>
                             <input type="radio" id="radio-two" name="switch-one" value="yes"  checked />
@@ -73,7 +115,7 @@ crossorigin="anonymous" />
                                 </div>
 
                                 <div style="padding-top: 10px;">
-                                    <input type="submit" style="width: 340px;" class="btn btn-lg btn-success"
+                                    <input type="submit" style="width: 340px;" class="btn btn-lg btn-black"
                                         value="Submit">
                                 </div>
 
@@ -98,7 +140,7 @@ crossorigin="anonymous" />
 
 
                                 <div style="padding-top: 10px;">
-                                    <input type="submit" style="width: 340px;" class="btn btn-lg btn-success"
+                                    <input type="submit" style="width: 340px;" class="btn btn-lg btn-black"
                                         value="Submit">
                                 </div>
 
@@ -111,7 +153,7 @@ crossorigin="anonymous" />
 
                         <div v-if="SuccFalse">
                             <div>Success</div>
-                            <button onclick="location.href = '/auth';"  style="width: 340px;" class="btn btn-lg btn-success"
+                            <button onclick="location.href = '/profile';"  style="width: 340px;" class="btn btn-lg btn-black"
                             value="return to login page!">return to main page!</button>
 
                         </div>
